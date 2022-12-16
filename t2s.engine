@@ -1,0 +1,17 @@
+#!/bin/bash
+#run: bash t2s.engine or bash t2s.engine "words" "lang_code"
+
+if [[ "$1" != "" ]]; then
+    string_data="$1"
+    lang="$2"
+:
+else
+    lang="en"
+    read -e -p "$(echo -ne "Type the string: ")" string_data
+:
+fi
+
+string_data=${string_data[@],,}
+ruby t2s.engine.rb "$string_data" "$lang"
+mpg123 "$string_data.mp3"
+rm "$string_data.mp3"
