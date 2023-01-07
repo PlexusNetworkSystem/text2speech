@@ -13,5 +13,7 @@ fi
 
 string_data=${string_data[@],,}
 ruby t2s.engine.rb "$string_data" "$lang"
+echo "------------------------------------------"
 mpg123 "$string_data.mp3"
+echo "------------------------------------------"
 rm "$string_data.mp3"
